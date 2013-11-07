@@ -1,0 +1,124 @@
+// 배경 스타일
+// --------
+@background-color: #ECF0F1;
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: @background-color;
+}
+
+
+// 포인터 스타일
+// ---------
+.pointer {
+  @outer-size: 100px;
+  @outer-border-width: 1px;
+  @outer-border-color: #2980b9;
+
+  @inner-size: 75px;
+  @inner-border-color: #3498db;
+
+  position: absolute;
+
+  .glow {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: @outer-size;
+    height: @outer-size;
+    border: @outer-border-width solid @outer-border-color;
+    border-radius: (@outer-size / 2);
+    box-sizing: border-box;
+    -webkit-animation: glow 0.7s ease-in-out infinite alternate;
+
+    opacity: 1;
+    transition-property: opacity, top;
+    transition-duration: 1s, 1s;
+    transition-delay: 0s, 0s;
+    transition-timing-function: ease-in, ease-in-out;
+  }
+
+  .glow.selected {
+    background-color: rgba(41, 128, 185, 0.4);
+  }
+
+  .glow.hide {
+    opacity: 0;
+    top: 100px;
+  }
+
+  .glow::after {
+    position: absolute;
+    top: ((@outer-size - @inner-size) / 2 - @outer-border-width);
+    left: ((@outer-size - @inner-size) / 2 - @outer-border-width);
+    content: "";
+    width: @inner-size;
+    height: @inner-size;
+    border: 1px solid @inner-border-color;
+    border-radius: (@inner-size / 2);
+    box-sizing: border-box;
+    box-shadow:
+      0px 0px 6px 4px fade(@inner-border-color, 30%),
+      inset 0 0 3px darken(@inner-border-color, 40%);
+  }
+
+  @-webkit-keyframes glow {
+    from {
+      box-shadow:
+        0px 0px 12px 6px fade(@outer-border-color, 20%),
+        inset 0 0 5px darken(@outer-border-color, 10%);
+    }
+    to {
+      box-shadow:
+        0px 0px 12px 6px fade(@outer-border-color, 40%),
+        inset 0 0 5px darken(@outer-border-color, 40%);
+    }
+  }
+
+  @-webkit-keyframes rotate {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+  }
+
+  @-webkit-keyframes hide {
+    from { opacity: 1 }
+    to { opacity: 0; display: none; }  
+  }
+
+  @-webkit-keyframes show {
+    from { opacity: 0; display: block; }
+    to { opacity: 1 }
+  }
+}
+
+// 사운드 박스
+// --------
+.sound-box {
+  @width: 150px;
+  @height: 150px;
+
+  width: @width;
+  height: @height;
+  border-radius: 10px;
+  border: 1px solid rgba(127, 140, 141, 1.0);
+  background: rgba(149, 165, 166, 1.0);
+
+  img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: ((@width - 120) / 2);
+    border: 1px solid rgba(189, 195, 199, 1.0);
+    border-radius: 60px;
+  }
+}
+
+
+// 큐브
+// ---
+.cube-wrap {
+  perspective: 800px;
+  perspective-origin: 50% 100px;
+}
