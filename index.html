@@ -6,16 +6,9 @@
 <link rel="stylesheet" href="css/_main.css">
 </head>
 <body>
-
 <div id="pointer" class="pointer">
-    <div class="glow"></div>
+    <div class="glow hide"></div>
 </div>
-<br><br>
-
-<div class="pointer">
-    <div class="glow selected"></div>
-</div>
-<br><br>
 
 <div class="sound-box">
     <img src="images/blank.png"></div>
@@ -32,12 +25,24 @@
     </div>
 </div>
 
+
+
+<!-- 템플릿 -->
+
+<!-- 라이브러리 -->
 <script src="lib/q.min.js"></script>
 <script src="lib/wave.min.js"></script>
 <script src="lib/underscore.min.js"></script>
 <script src="lib/jquery.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/pointer.js"></script>
+<script src="lib/backbone.min.js"></script>
+<script src="lib/backbone.marionette.min.js"></script>
+<script src="lib/leap.min.js"></script>
+
+<!-- 순서 유지 필요 -->
+<script src="js/LB.js"></script>
+<script src="js/LB.leap.js"></script>
+<script src="js/LB.pointer.js"></script>
+<!-- <script src="js/main.js"></script> -->
 <script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>
