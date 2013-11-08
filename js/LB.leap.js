@@ -8,6 +8,7 @@
  * - screenTap
  * - swipe:leftToRight
  * - swipe:rightToLeft
+ * - circle: (pos)
  */
 LB.leap = (function () {
 
@@ -31,18 +32,19 @@ LB.leap = (function () {
         catchFingerPos(frame);
         catchSwipeGesture(frame);
         catchScreenTapGesture(frame);
+        catchCircleGesture(frame);
     });
 
     // 립모션 컨트롤러에 따라 포인터를 움직인다.
     var _fingersOn = false;
     function catchFingerPos(frame) {
         // 손이 올라가 있지 않거나,
-        // 손가락을 펼치고 있지 않다면 중지한다.
+        // 손가락을 한 개만 펼치고 있지 않다면 중지한다.
         if (frame.hands.length === 0 ||
-                frame.hands[0].fingers.length === 0) {
+                frame.hands[0].fingers.length !== 1) {
             if (_fingersOn) {
                 leap.trigger('finger:off');
-                console.log('립모션 손가락 내림');
+                console.log('립모션 핑거 액션 시작');
                 _fingersOn = false;
             }
             return;
@@ -56,7 +58,7 @@ LB.leap = (function () {
 
         if (! _fingersOn) {
             leap.trigger('finger:on');
-            console.log('립모셥 손가락 올림');
+            console.log('립모셥 핑거 액션 종료');
             _fingersOn = true;
         }
 
@@ -83,13 +85,24 @@ LB.leap = (function () {
         }
     }
 
-    // 스크린 탭 제서츠럴 찾는다.
+    // 스크린 탭 제스처를 찾는다.
     function catchScreenTapGesture(frame) {
         var gesture = frame.gestures[0];
 
         if (!gesture || gesture.type !== 'screenTap') { return; }
 
         triggerGestureEvent('screenTab');
+    }
+
+    // 서클 제스처를 찾는다.
+    function catchCircleGesture(frame) {
+        var gesture = frame.gestures[0];
+
+        if (!gesture || gesture.type !== 'circle') { return; }
+
+        var pos = leapToScene(frame, gesture.center);
+
+        triggerGestureEvent('circle', pos);
     }
 
     // 제스처 이벤트를 발생한다.

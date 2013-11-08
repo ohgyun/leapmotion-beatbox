@@ -4,45 +4,21 @@
 LB.sounds = (function () {
 
     var soundList = [
-        { id: 'beatA', type: 'beat', src: 'sounds/beats/beat1_boom_a' },
-        { id: 'beatB', type: 'beat', src: 'sounds/beats/beat1_boom_b' },
         { id: 'beatC', type: 'beat', src: 'sounds/beats/beat2_kashi_a' },
         { id: 'beatD', type: 'beat', src: 'sounds/beats/beat3_paomeu_a' },
         { id: 'beatE', type: 'beat', src: 'sounds/beats/beat4_ptttpeu_a' },
-        { id: 'beatF', type: 'beat', src: 'sounds/beats/beat4_ptttpeu_b' },
-        { id: 'beatG', type: 'beat', src: 'sounds/beats/beat5_slupttt_a' },
 
-        { id: 'chorusA', type: 'chorus', src: 'sounds/coeurs/coeur1_oaaah_a' },
         { id: 'chorusB', type: 'chorus', src: 'sounds/coeurs/coeur1_oaaah_b' },
         { id: 'chorusC', type: 'chorus', src: 'sounds/coeurs/coeur2_cougou_a' },
-        { id: 'chorusD', type: 'chorus', src: 'sounds/coeurs/coeur2_cougou_b' },
         { id: 'chorusE', type: 'chorus', src: 'sounds/coeurs/coeur3_porticoeur_a' },
-        { id: 'chorusF', type: 'chorus', src: 'sounds/coeurs/coeur3_porticoeur_b' },
         
-        { id: 'effectA', type: 'effect', src: 'sounds/effects/effet1_poulll_a' },
         { id: 'effectB', type: 'effect', src: 'sounds/effects/effet1_poulll_b' },
-        { id: 'effectC', type: 'effect', src: 'sounds/effects/effet2_tucati_a' },
-        { id: 'effectD', type: 'effect', src: 'sounds/effects/effet3_tuilopta_a' },
-        { id: 'effectE', type: 'effect', src: 'sounds/effects/effet3_tuilopta_b' },
-        { id: 'effectF', type: 'effect', src: 'sounds/effects/effet4_tululou_a' },
         { id: 'effectG', type: 'effect', src: 'sounds/effects/effet5_tumttt_a' },
-        { id: 'effectH', type: 'effect', src: 'sounds/effects/effet5_tumttt_b' },
+        { id: 'effectH', type: 'effect', src: 'sounds/voix/voix2_uare_a' },
 
         { id: 'melodyA', type: 'melody', src: 'sounds/melodies/melo1_nananana_a' },
-        { id: 'melodyB', type: 'melody', src: 'sounds/melodies/melo1_nananana_b' },
-        { id: 'melodyC', type: 'melody', src: 'sounds/melodies/melo2_pelulu_a' },
-        { id: 'melodyD', type: 'melody', src: 'sounds/melodies/melo2_pelulu_b' },
-        { id: 'melodyE', type: 'melody', src: 'sounds/melodies/melo3_siffle_a' },
         { id: 'melodyF', type: 'melody', src: 'sounds/melodies/melo3_siffle_b' },
-        { id: 'melodyG', type: 'melody', src: 'sounds/melodies/melo4_tatouti_a' },
-        { id: 'melodyH', type: 'melody', src: 'sounds/melodies/melo4_tatouti_b' },
-        { id: 'melodyI', type: 'melody', src: 'sounds/melodies/melo5_tvutvutvu_a' },
-        { id: 'melodyJ', type: 'melody', src: 'sounds/melodies/melo5_tvutvutvu_b' },
-
-        { id: 'voiceA', type: 'voice', src: 'sounds/voix/voix1_isit_a' },
-        { id: 'voiceB', type: 'voice', src: 'sounds/voix/voix1_isit_b' },
-        { id: 'voiceC', type: 'voice', src: 'sounds/voix/voix2_uare_a' },
-        { id: 'voiceD', type: 'voice', src: 'sounds/voix/voix2_uare_b' }
+        { id: 'melodyI', type: 'melody', src: 'sounds/melodies/melo5_tvutvutvu_a' }
     ];
 
     var len = soundList.length;

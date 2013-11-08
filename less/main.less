@@ -4,13 +4,14 @@
 @beat-color: rgba(52, 73, 94, 1.0);
 @melody-color: rgba(142, 68, 173, 1.0);
 @chorus-color: rgba(39, 174, 96, 1.0);
-@voice-color: rgba(211, 84, 0, 1.0);
+@effect-color: rgba(211, 84, 0, 1.0);
 
 body {
   margin: 0;
   padding: 0;
   position: relative;
   background: @background-color;
+  font-family: "Bauhaus 93"
 }
 
 
@@ -107,9 +108,11 @@ body {
 
   width: @width;
   height: @height;
+  position: relative;
+  display: block;
+  margin: 10px auto;
   border-radius: 10px;
   border: 1px solid rgba(127, 140, 141, 1.0);
-  background: rgba(149, 165, 166, 1.0);
 
   img {
     display: block;
@@ -118,61 +121,101 @@ body {
     margin: ((@width - 120) / 2);
     border: 1px solid rgba(189, 195, 199, 1.0);
     border-radius: 60px;
+    background: #fff;
   }
 }
-
+.sound-box.beat {
+  background: @beat-color !important;
+}
+.sound-box.melody {
+  background: @melody-color !important;
+}
+.sound-box.chorus {
+  background: @chorus-color !important;
+}
+.sound-box.effect {
+  background: @effect-color !important;
+}
 
 // 큐브
 // ---
-.cube-wrap {
-  @width: 200px;
-  @height: 200px;
+#cube-wrap {
+  @width: 260px;
+  @half-width: (@width / 2);
+  @height: 400px;
 
-  position: relative;
-  left: 300px;
-  -webkit-perspective: 1000px;
-  -webkit-perspective-origin: 50% 100px;
+  position: absolute;
+  left: 80px;
+  top: 30px; 
+  -webkit-perspective: none;
+  -webkit-perspective-origin: 0 0;
 
+  text-align: center;
+  font-size: 40px;
+  text-shadow: 3px 3px 3px #aaa;
 
   .cube {
     position: relative;
     width: @width;
+    height: @height;
+
     -webkit-transform-style: preserve-3d;
-    -webkit-animation: spin 5s infinite linear;
+
+    transition-property: rotateY;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    transition-timing-function: ease-in-out;
   }
 
-  .cube div {
+  .cube .panel {
     position: absolute;
+    padding: 10px;
     width: @width;
-    height: @height;
-    background: green;
+    height: 100%;
+    border-radius: 
+    background: #eee;
+  }
+
+  .cube .beat {
+    color: darken(@beat-color, 20%);
+    background: tint(@beat-color, 60%);
+  }
+
+  .cube .chorus {
+    color: darken(@chorus-color, 20%);
+    background: tint(@chorus-color, 60%);
+  }
+
+  .cube .melody {
+    color: darken(@melody-color, 20%);
+    background: tint(@melody-color, 60%);
+  }
+
+  .cube .effect {
+    color: darken(@effect-color, 20%);
+    background: tint(@effect-color, 60%);
   }
 
   .back {
-    -webkit-transform: translateZ(-100px) rotateY(180deg);
+    -webkit-transform: translateZ((@half-width * -1)) rotateY(180deg);
   }
   .right {
-    -webkit-transform: rotateY(-270deg) translateX(100px);
+    -webkit-transform: rotateY(-270deg) translateX(@half-width);
     -webkit-transform-origin: top right;
   }
   .left {
-    -webkit-transform: rotateY(270deg) translateX(-100px);
+    -webkit-transform: rotateY(270deg) translateX((@half-width * -1));
     -webkit-transform-origin: center left;
   }
   .top {
-    -webkit-transform: rotateX(-90deg) translateY(-100px);
+    -webkit-transform: rotateX(-90deg) translateY((@half-width * -1));
     -webkit-transform-origin: top center;
   }
   .bottom {
-    -webkit-transform: rotateX(90deg) translateY(100px);
+    -webkit-transform: rotateX(90deg) translateY(@half-width);
     -webkit-transform-origin: bottom center;
   }
   .front {
-    -webkit-transform: translateZ(100px);
-  }
-
-  @-webkit-keyframes spin {
-    from { -webkit-transform: rotateY(0); }
-    to { -webkit-transform: rotateY(360deg); }
+    -webkit-transform: translateZ(@half-width);
   }
 }

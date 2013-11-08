@@ -29,6 +29,7 @@ button.on {
     <div id="chorus"></div>
     <div id="melody"></div>
     <div id="voice"></div>
+    <div id="effect"></div>
 </div>
 <!-- 템플릿 -->
 
@@ -61,7 +62,7 @@ function createButton(obj) {
     var src = /\/(\w+)$/.exec(obj.src)[1];
 
     $('<button>')
-        .html(src)
+        .html(id + ' / ' + src)
         .on('click', function () {
             var $this = $(this);
 

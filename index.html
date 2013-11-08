@@ -6,28 +6,30 @@
 <link rel="stylesheet" href="css/_main.css">
 </head>
 <body>
-<div id="pointer" class="pointer">
-    <div class="glow hide"></div>
 </div>
 
-<div class="sound-box">
-    <img src="images/blank.png"></div>
-</div>
-
-<div class="cube-wrap">
+<div id="cube-wrap">
     <div class="cube">
-        <div class="front beat">front</div>
-        <div class="back chorus">back</div>
-        <div class="top">top</div>
-        <div class="bottom">bottom</div>
-        <div class="left melody">left</div>
-        <div class="right voice">right</div>
+        <div class="panel front beat">Beat</div>
+        <div class="panel back chorus">Chorus</div>
+        <div class="panel top"></div>
+        <div class="panel bottom"></div>
+        <div class="panel left melody">Melody</div>
+        <div class="panel right effect">Effect</div>
+    </div>
+</div>
+<div id="pointer-layer">
+    <div id="pointer" class="pointer">
+        <div class="glow hide"></div>
     </div>
 </div>
 
 
-
 <!-- 템플릿 -->
+<script id="tmpl-soundbox" type="text/html">
+<img src="images/<%=id%>.png"></div>
+</script>
+
 
 <!-- 라이브러리 -->
 <script src="lib/q.min.js"></script>
@@ -43,6 +45,7 @@
 <script src="js/LB.leap.js"></script>
 <script src="js/LB.pointer.js"></script>
 <script src="js/LB.sounds.js"></script>
+<script src="js/LB.cube.js"></script>
 <script src="js/main.js"></script>
 <script src="//localhost:35729/livereload.js"></script>
 </body>
