@@ -90,7 +90,7 @@ LB.sounds = (function () {
     return {
         start: function () {
             // 모두 로드되면 자동 재생한다.
-            loadAllSounds().then(function () {
+            return loadAllSounds().then(function () {
                 console.log('모든 사운드 로딩 완료!');
 
                 // 모든 비트는 무한 재생시키되,
@@ -100,6 +100,10 @@ LB.sounds = (function () {
 
                 playAllSounds();
             });
+        },
+
+        getList: function () {
+            return soundList;
         }
     };
 

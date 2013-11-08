@@ -1,0 +1,82 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="css/_main.css">
+<style>
+button {
+    display:block;
+    width: 150px;
+    padding:10px;
+    margin:10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button.on {
+    background: yellow;
+}
+
+#wrap div {
+    float: left;
+}
+</style>
+</head>
+<body>
+<div id="wrap">
+    <div id="beat"></div>
+    <div id="chorus"></div>
+    <div id="melody"></div>
+    <div id="voice"></div>
+</div>
+<!-- 템플릿 -->
+
+<!-- 라이브러리 -->
+<script src="lib/q.min.js"></script>
+<script src="lib/wave.min.js"></script>
+<script src="lib/underscore.min.js"></script>
+<script src="lib/jquery.min.js"></script>
+
+<!-- 순서 유지 필요 -->
+<script src="js/LB.js"></script>
+<script src="js/LB.sounds.js"></script>
+<script>
+
+LB.sounds.start().then(function () {
+    drawButtons();
+});
+
+var $wrap = $('#wrap');
+var soundList = LB.sounds.getList();
+
+function drawButtons() {
+    soundList.forEach(function (obj) {
+        createButton(obj);
+    });
+}
+
+function createButton(obj) {
+    var id = obj.id;
+    var src = /\/(\w+)$/.exec(obj.src)[1];
+
+    $('<button>')
+        .html(src)
+        .on('click', function () {
+            var $this = $(this);
+
+            if ($this.hasClass('on')) {
+                $this.removeClass('on');
+                wave(obj.id).mute();
+
+            } else {
+                $this.addClass('on');
+                wave(obj.id).unmute();
+            }
+        })
+        .appendTo($wrap.find('#' + obj.type));
+}
+
+</script>
+</body>
+</html>
