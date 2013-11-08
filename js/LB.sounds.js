@@ -56,11 +56,6 @@ LB.sounds = (function () {
             muted: true
         });
 
-        // 모든 비트는 무한 재생 시켜둔다.
-        sound.on('end', function () {
-            this.play();
-        });
-
         sound.on('load', function () {
             deferred.resolve(obj.id);
         });
@@ -83,17 +78,27 @@ LB.sounds = (function () {
         return Q.all(promises);
     }
 
+    // 모든 비트의 싱크를 맞추기 위해
+    // 로드하면 모든 음원을 동시에 재생한다.
+    // mute 되어 있기 때문에 소리가 나진 않는다.
+    function playAllSounds() {
+        soundList.forEach(function (obj) {
+            wave(obj.id).play();
+        });
+    }
+
     return {
         start: function () {
+            // 모두 로드되면 자동 재생한다.
             loadAllSounds().then(function () {
                 console.log('모든 사운드 로딩 완료!');
 
-                // 모든 비트의 싱크를 맞추기 위해
-                // 로드하면 모든 음원을 동시에 재생한다.
-                // mute 되어 있기 때문에 소리가 나진 않는다.
-                soundList.forEach(function (obj) {
-                    wave(obj.id).play();
-                });
+                // 모든 비트는 무한 재생시키되,
+                // 싱크를 맞추기 위해 첫 번째 비트에 맞춘다.
+                var baseBeat = wave(soundList[0].id);
+                baseBeat.on('end', playAllSounds);
+
+                playAllSounds();
             });
         }
     };
