@@ -2,9 +2,9 @@ LB.SoundBox = (function () {
 
     // 사운드 박스
     // --------
-    function SoundBox(options, cube) {
+    function SoundBox(options, cube, playstand) {
         var template = _.template([
-            '<div class="sound-box <%=type%> selected">',
+            '<div class="sound-box <%=type%>">',
                 '<img src="images/<%=id%>.png">',
             '</div>'
         ].join(''));
@@ -13,7 +13,10 @@ LB.SoundBox = (function () {
         this.$el = $(template(options));
         this.$img = this.$el.find('img');
 
-        this.$el.appendTo(cube.getArea(options.type));
+        this.$area = cube.getArea(options.type);
+        this.$playstand = playstand.getStand();
+
+        this.$el.appendTo(this.$area);
     }
     _.extend(SoundBox.prototype, {
         select: function () {
@@ -26,10 +29,16 @@ LB.SoundBox = (function () {
 
         play: function () {
             this.$img.attr('src', this.getPlaySrc());
+            this.$el.appendTo(this.$playstand);
+
+            wave(this.id).unmute();
         },
 
         stop: function () {
             this.$img.attr('src', this.getStopSrc());
+            this.$el.appendTo(this.$area);
+
+            wave(this.id).mute();
         },
 
         getPlaySrc: function () {
@@ -43,9 +52,9 @@ LB.SoundBox = (function () {
 
     SoundBox.map = {};
 
-    SoundBox.createSoundBoxes = function (soundList, cube) {
+    SoundBox.createSoundBoxes = function (soundList, cube, playstand) {
         soundList.forEach(function (obj) {
-            SoundBox.map[obj.id] = new SoundBox(obj, cube);
+            SoundBox.map[obj.id] = new SoundBox(obj, cube, playstand);
         });
     };
 
