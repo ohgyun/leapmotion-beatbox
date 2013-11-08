@@ -33,6 +33,8 @@ LB.leap = (function () {
         catchSwipeGesture(frame);
         catchScreenTapGesture(frame);
         catchCircleGesture(frame);
+        catchFourFingers(frame);
+        catchFiveFingers(frame);
     });
 
     // 립모션 컨트롤러에 따라 포인터를 움직인다.
@@ -105,25 +107,37 @@ LB.leap = (function () {
         triggerGestureEvent('circle', pos);
     }
 
+    function catchFourFingers(frame) {
+        if (frame.fingers.length === 4) {
+            triggerGestureEvent('finger:preset', 'four');
+        }
+    }
+
+    function catchFiveFingers(frame) {
+        if (frame.fingers.length === 5) {
+            triggerGestureEvent('finger:preset', 'five');
+        }
+    }
+
     // 제스처 이벤트를 발생한다.
     // 단위시간 당 중복해서 발생하는 이벤트는 무시한다.
-    var _geFired = {};
-    function triggerGestureEvent(name) {
+    var _geFired = false;
+    function triggerGestureEvent(name, param) {
         // 이미 발생했다면, 무시한다. 
-        if (_geFired[name]) {
+        if (_geFired) {
             return;
         }
 
-        _geFired[name] = true;
-        console.log('립모셥 스와이프 제스처: ' + name);
-        leap.trigger(name);
+        _geFired = true;
+        console.log('립모셥 스와이프 제스처: ' + name, param);
+        leap.trigger(name, param);
 
-        // 500ms 뒤에 제거한다.
+        // 2초 뒤에 제거한다.
         // 즉, 중복 발생한 제스처 이벤트는 무시한다.
         // animationFrame과 setTimeout에 의한 타이머 오차는 무시한다.
         setTimeout(function () {
-            _geFired[name] = false;
-        }, 500);
+            _geFired = false;
+        }, 2000);
     }
 
     // 립모션의 leapSpace로 프레임의 값을 좌표계로 옮긴다.

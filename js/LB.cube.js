@@ -29,17 +29,21 @@ LB.cube = (function () {
     function next() {
         currentDeg += degStep;
         rotateTo(currentDeg);
-        return degToType[String(Math.abs(currentDeg % 360))];
+        return getActivatedType();
     }
 
     function prev() {
         currentDeg -= degStep;
         rotateTo(currentDeg);
-        return degToType[String(Math.abs(currentDeg % 360))];
+        return getActivatedType();
     }
 
     function rotateTo(deg) {
         $cube[0].style.webkitTransform = 'rotateY(' + deg + 'deg)';
+    }
+
+    function getActivatedType() {
+        return degToType[String(Math.abs(currentDeg % 360))];
     }
 
 
@@ -59,6 +63,10 @@ LB.cube = (function () {
 
         getArea: function (type) {
             return $area[type];
+        },
+
+        getActivatedType: function () {
+            return getActivatedType();
         }
     };
 

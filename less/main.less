@@ -41,10 +41,10 @@ body {
     -webkit-animation: glow 0.7s ease-in-out infinite alternate;
 
     opacity: 1;
-    transition-property: opacity, top;
-    transition-duration: 1s, 1s;
-    transition-delay: 0s, 0s;
-    transition-timing-function: ease-in, ease-in-out;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-delay: 0s;
+    transition-timing-function: ease-in;
   }
 
   .glow.selected {
@@ -53,7 +53,6 @@ body {
 
   .glow.hide {
     opacity: 0;
-    top: 100px;
   }
 
   .glow::after {
@@ -82,21 +81,6 @@ body {
         0px 0px 12px 6px fade(@outer-border-color, 40%),
         inset 0 0 5px darken(@outer-border-color, 40%);
     }
-  }
-
-  @-webkit-keyframes rotate {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
-  }
-
-  @-webkit-keyframes hide {
-    from { opacity: 1 }
-    to { opacity: 0; display: none; }  
-  }
-
-  @-webkit-keyframes show {
-    from { opacity: 0; display: block; }
-    to { opacity: 1 }
   }
 }
 
@@ -157,7 +141,7 @@ body {
 
   text-align: center;
   font-size: 40px;
-  text-shadow: 3px 3px 3px #aaa;
+  text-shadow: 0 0 10px #fff;
 
   .cube {
     position: relative;
@@ -167,7 +151,7 @@ body {
     -webkit-transform-style: preserve-3d;
 
     transition-property: rotateY;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
     transition-delay: 0s;
     transition-timing-function: ease-in-out;
 
@@ -247,6 +231,7 @@ body {
   .title {
     margin: 10px;
     font-size: 50px;
+    text-shadow: 0 0 10px #fff;
     color: #2c3e50;
   }
 
