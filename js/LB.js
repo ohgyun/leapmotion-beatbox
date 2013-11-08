@@ -1,0 +1,2 @@
+// Leapmotion Beatbox
+window.LB = {};
