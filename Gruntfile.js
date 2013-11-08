@@ -52,6 +52,6 @@ module.exports = function (grunt) {
     // 직접적으로 사용할 태스크 목록
     //-----------------------
     grunt.registerTask('default', '브라우저 환경에서 라이브리로드가 적용된 개발 환경을 만든다.', [
-        'connect', 'watch'
+        'less', 'connect', 'watch'
     ]);
 };

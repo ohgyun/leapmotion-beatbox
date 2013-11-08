@@ -133,7 +133,9 @@ LB.leap = (function () {
         return [x, -y];
     }
 
-    controller.connect();
+    leap.start = function () {
+        controller.connect();
+    };
 
     return leap;
 }());
