@@ -4,4 +4,6 @@
 
 // LB.sounds.start();
 
-LB.cube.start(LB.sounds.getList());
+LB.cube.start();
+
+LB.SoundBox.createSoundBoxes(LB.sounds.getList(), LB.cube);

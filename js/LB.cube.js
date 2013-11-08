@@ -14,6 +14,8 @@ LB.cube = (function () {
         'effect': $cube.find('.effect')
     };
 
+    var soundBoxes = [];
+
     var currentDeg = 0;
     var degStep = 90;
 
@@ -23,10 +25,6 @@ LB.cube = (function () {
         180: 'chorus',
         270: 'melody'
     };
-
-    // 해상도에 맞춰 큐브의 크기를 셋팅한다.
-    var hCubeMin = 580;
-    $cube.height(Math.max(hWindow * 0.8, hCubeMin));
 
     function next() {
         currentDeg += degStep;
@@ -44,37 +42,24 @@ LB.cube = (function () {
         $cube[0].style.webkitTransform = 'rotateY(' + deg + 'deg)';
     }
 
-    // 사운드 박스
-    // --------
-    function SoundBox(options) {
-        var template = _.template([
-            '<div class="sound-box <%=type%>">',
-                '<img src="images/<%=id%>.png">',
-            '</div>'
-        ].join(''));
 
-        var $el = $(template(options));
-        var $parent = 
-
-        $el.appendTo($area[options.type]);
-    }
-
-    function createSoundBoxes(soundList) {
-        soundList.forEach(function (obj) {
-            new SoundBox(obj);
-        });
-    }
 
     return {
-        start: function (soundList) {
+        start: function () {
             rotateTo(currentDeg);
-
-            createSoundBoxes(soundList);
         },
 
         next: next,
 
-        prev: prev
+        prev: prev,
+
+        getSoundBoxes: function () {
+            return soundBoxes;
+        },
+
+        getArea: function (type) {
+            return $area[type];
+        }
     };
 
 }());

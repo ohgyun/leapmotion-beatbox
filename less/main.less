@@ -124,6 +124,11 @@ body {
     background: #fff;
   }
 }
+.sound-box.selected {
+  box-shadow:
+    0px 0px 20px 15px fade(#fff, 50%),
+    inset 0 0 8px 4px #fff;
+}
 .sound-box.beat {
   background: @beat-color !important;
 }
@@ -142,11 +147,11 @@ body {
 #cube-wrap {
   @width: 260px;
   @half-width: (@width / 2);
-  @height: 400px;
+  @height: 650px;
 
   position: absolute;
   left: 80px;
-  top: 30px; 
+  top: 50px; 
   -webkit-perspective: none;
   -webkit-perspective-origin: 0 0;
 
@@ -165,35 +170,39 @@ body {
     transition-duration: 1s;
     transition-delay: 0s;
     transition-timing-function: ease-in-out;
-  }
 
-  .cube .panel {
-    position: absolute;
-    padding: 10px;
-    width: @width;
-    height: 100%;
-    border-radius: 
-    background: #eee;
-  }
+    .title {
+      font-size: 35px;
+      margin: 10px;
+    }
 
-  .cube .beat {
-    color: darken(@beat-color, 20%);
-    background: tint(@beat-color, 60%);
-  }
+    .panel {
+      position: absolute;
+      width: @width;
+      height: 100%;
+      border-radius: 
+      background: #eee;
+    }
 
-  .cube .chorus {
-    color: darken(@chorus-color, 20%);
-    background: tint(@chorus-color, 60%);
-  }
+    .beat {
+      color: darken(@beat-color, 20%);
+      background: tint(@beat-color, 60%);
+    }
 
-  .cube .melody {
-    color: darken(@melody-color, 20%);
-    background: tint(@melody-color, 60%);
-  }
+    .chorus {
+      color: darken(@chorus-color, 20%);
+      background: tint(@chorus-color, 60%);
+    }
 
-  .cube .effect {
-    color: darken(@effect-color, 20%);
-    background: tint(@effect-color, 60%);
+    .melody {
+      color: darken(@melody-color, 20%);
+      background: tint(@melody-color, 60%);
+    }
+
+    .effect {
+      color: darken(@effect-color, 20%);
+      background: tint(@effect-color, 60%);
+    }
   }
 
   .back {
@@ -217,5 +226,32 @@ body {
   }
   .front {
     -webkit-transform: translateZ(@half-width);
+  }
+}
+
+// 플레이 스탠드
+// ----------
+#playstand-wrap {
+  @width: 800px;
+  @height: 650px;
+  @bgcolor: #95a5a6;
+
+  position: absolute;
+  right: 80px;
+  top: 50px;
+  width: @width;
+  height: @height;
+  background: @bgcolor;
+  text-align: center;
+
+  .title {
+    margin: 10px;
+    font-size: 50px;
+    color: #2c3e50;
+  }
+
+  .playstand {
+
+
   }
 }

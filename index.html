@@ -10,13 +10,16 @@
 
 <div id="cube-wrap">
     <div class="cube">
-        <div class="panel front beat">Beat</div>
-        <div class="panel back chorus">Chorus</div>
+        <div class="panel front beat"><div class="title">Beat</div></div>
+        <div class="panel back chorus"><div class="title">Chorus</div></div>
         <div class="panel top"></div>
         <div class="panel bottom"></div>
-        <div class="panel left melody">Melody</div>
-        <div class="panel right effect">Effect</div>
+        <div class="panel left melody"><div class="title">Melody</div></div>
+        <div class="panel right effect"><div class="title">Effect</div></div>
     </div>
+</div>
+<div id="playstand-wrap">
+    <div class="title">Play Stand</div>
 </div>
 <div id="pointer-layer">
     <div id="pointer" class="pointer">
@@ -37,7 +40,6 @@
 <script src="lib/underscore.min.js"></script>
 <script src="lib/jquery.min.js"></script>
 <script src="lib/backbone.min.js"></script>
-<script src="lib/backbone.marionette.min.js"></script>
 <script src="lib/leap.min.js"></script>
 
 <!-- 순서 유지 필요 -->
@@ -46,6 +48,7 @@
 <script src="js/LB.pointer.js"></script>
 <script src="js/LB.sounds.js"></script>
 <script src="js/LB.cube.js"></script>
+<script src="js/LB.SoundBox.js"></script>
 <script src="js/main.js"></script>
 <script src="//localhost:35729/livereload.js"></script>
 </body>
