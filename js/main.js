@@ -2,4 +2,4 @@
 
 // LB.pointer.start(LB.leap);
 
-LB.sounds.start();
+// LB.sounds.start();

@@ -3,8 +3,6 @@
  */
 LB.sounds = (function () {
 
-
-
     var soundList = [
         { id: 'beatA', type: 'beat', src: 'sounds/beats/beat1_boom_a' },
         { id: 'beatB', type: 'beat', src: 'sounds/beats/beat1_boom_b' },
@@ -88,12 +86,12 @@ LB.sounds = (function () {
     return {
         start: function () {
             loadAllSounds().then(function () {
-                console.log('All sound loaded');
+                console.log('모든 사운드 로딩 완료!');
 
+                // 모든 비트의 싱크를 맞추기 위해
+                // 로드하면 모든 음원을 동시에 재생한다.
+                // mute 되어 있기 때문에 소리가 나진 않는다.
                 soundList.forEach(function (obj) {
-                    // 모든 비트의 싱크를 맞추기 위해
-                    // 로드하면 모든 음원을 동시에 재생한다.
-                    // mute 되어 있기 때문에 소리가 나진 않는다.
                     wave(obj.id).play();
                 });
             });
